@@ -30,8 +30,7 @@ class Client
 	public function push($consumer, $action, array $data = array())
 	{
 		$url = sprintf(
-			'%s/%s-%s',
-			$this->url,
+			'%s-%s',
 			$consumer,
 			$action
 		);
@@ -45,8 +44,14 @@ class Client
 	 * @param  array  $data
 	 * @return boolean Success or not?
 	 */
-	private function post($url, array $data = array())
+	public function post($url, array $data = array())
 	{
+		$url = sprintf(
+			'%s/%s',
+			$this->url,
+			$url
+		);
+
 		$request = new Curl();
 		$request->post($url, $data);
 		return ! $request->http_error;
