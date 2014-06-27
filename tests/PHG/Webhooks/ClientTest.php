@@ -19,8 +19,9 @@ class ClientTest extends \PHG\Webhooks\TestCase
 			->shouldReceive('post')
 			->once()
 			->with($consumer . '-' . $action, $data)
+			->andReturn(true)
 			->mock();
 
-		$client->push($consumer, $action, $data);
+		$this->assertTrue($client->push($consumer, $action, $data));
 	}
 }
