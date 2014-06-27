@@ -13,7 +13,7 @@ class Client
 	private $url = null;
 
 	/**
-	 * @param stringh $url
+	 * @param string $url
 	 */
 	public function __construct($url)
 	{
